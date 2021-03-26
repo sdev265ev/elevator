@@ -54,7 +54,6 @@ def CarManager():
 	bottomFloor = config.BottomFloor
 	totalSteps = 0
 	Car = StepperDriverClass(id, [31,29,7,5], 26, 24 ) # Create an instance of the stepper motor driver.
-	
 	Door = StepperDriverClass(id, [37,22,19,21], 23, 32 ) # Create an instance of the stepper motor driver.
 	
 	CarLampInitialize.CarLampInitialize() # Configure GPIO and turn off car lamps.
@@ -68,7 +67,7 @@ def CarManager():
 	
 	#####nl.udpListenerMain()
 	
-	# cdm.CarDoorManager('close')
+	# cdm.CarDoorManager(Door, 'close')
 	print ('CarManager: Moving to bottom floor')
 	# Move car to bottom floor.
 	Car.moveMotor(-1000000)
@@ -138,9 +137,9 @@ def CarManager():
 					# Hall call may happen on the way to the destination floor.
 					# Pause at this floor for passengers.
 	
-		#cdm.CarDoorManager('open')
+		#cdm.CarDoorManager(Door, 'open')
 		#time.sleep(3)
-		#cdm.CarDoorManager('close')		
+		#cdm.CarDoorManager(Door, 'close')		
 		floor += direction
 		
 		# Change direction if top or bottom floor reached.
