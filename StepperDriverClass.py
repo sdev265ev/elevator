@@ -26,7 +26,7 @@ class StepperDriverClass():
 		# Use BCM GPIO references instead of physical pin numbers.
 		GPIO.setmode(GPIO.BOARD)
 		self.id = id
-		self.stepMotorPins =  [31,29,7,5]
+		self.stepMotorPins =  StepMotorPins  #[31,29,7,5]
 		self.LSBottomPin = 26  		# = 7
 		self.LSTopPin = 24  		# = 8
 		self.Seq = [[1,0,0,1], [1,0,0,0], [1,1,0,0], [0,1,0,0], [0,1,1,0], [0,0,1,0], [0,0,1,1], [0,0,0,1]]
