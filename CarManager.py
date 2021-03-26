@@ -71,19 +71,19 @@ def CarManager():
 	# cdm.CarDoorManager('close')
 	print ('CarManager: Moving to bottom floor')
 	# Move car to bottom floor.
-	Car.moveCar(-100000)
+	Car.moveMotor(-1000000)
 	time.sleep(.2)
 	
-	totalSteps = 7400
+	totalSteps = 1000000
 	#print ('CarManager: Moving to top floor to count steps')
 	# Move car to top floor.
 	# Will stop when car reaches limit switch.
-	totalSteps = Car.moveCar(555555)
+	totalSteps = Car.moveMotor(555555)
 	print ("CarManager: Total steps: ", totalSteps)
 	#time.sleep(1)
 		
 	#print ('CarManager: Moving to bottom floor')
-	Car.moveCar(-1000000)
+	Car.moveMotor(-1000000)
 	#cdm.CarDoorManager('open')
 	
 	# Setting parameters for directions, height of elevator, and initial floor.
@@ -128,7 +128,7 @@ def CarManager():
 					moveDirection = -1
 
 				#cdm.CarDoorManager('close')
-				Car.moveCar(stepsPerFloor * moveDirection)	# Move one floor.
+				Car.moveMotor(stepsPerFloor * moveDirection)	# Move one floor.
 				currentFloor += moveDirection			# Now moved, update floor.
 				config.CarFloorStopList[0] = currentFloor	# Update list for new floor.
 				config.CarFloorStopList[currentFloor] = 0	# Clear list for this floor.
