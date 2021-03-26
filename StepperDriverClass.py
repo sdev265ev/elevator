@@ -43,7 +43,7 @@ class StepperDriverClass():
 	# Variables defined here are called class variables and are in all instances of this class.
 	# Each group of 4 values (bits) are applied to the H-Bridge controller inputs by the RPi outputs pins.
 
-	def moveCar(self, steps):
+	def moveMotor(self, steps):
 		stepDirection = 1
 		if steps < 0 :
 			stepDirection = -1
