@@ -10,7 +10,7 @@ import time
 #import config
 from CarDoorDriver import CarDoorDriver
 
-def CarDoorManager(action):
+def CarDoorManager(Door, action):
 	#doorOpenWaitTime = config.doorOpenWaitTime
 	doorOpenWaitTime = 3
 	while True:
