@@ -27,8 +27,8 @@ class StepperDriverClass():
 		GPIO.setmode(GPIO.BOARD)
 		self.id = id
 		self.stepMotorPins =  StepMotorPins  #[31,29,7,5]
-		self.LSBottomPin = 26  		# = 7
-		self.LSTopPin = 24  		# = 8
+		self.LSBottomPin = LSBottomPin	#26  		# = 7
+		self.LSTopPin = LSTopPin	# 24  		# = 8
 		self.Seq = [[1,0,0,1], [1,0,0,0], [1,1,0,0], [0,1,0,0], [0,1,1,0], [0,0,1,0], [0,0,1,1], [0,0,0,1]]
 	
 		# Set up top and bottom floor limit switches.
