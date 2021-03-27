@@ -13,27 +13,24 @@ import datetime
 import time
 DEBUGLEVEL = 3
 
-
 Role = "" # Hall or Master.
 
-# Car Values.
+# =================== Lift Values.
 # Top floor and bottom floor created as variables to allow for changing sizes.
 
 TopFloor = 5
 BottomFloor = 1
-FloorStopList    = [0,0,0,0,0,0]
-CarFloorStopList = [0,0,0,0,0,0]
+FloorStopList    = []
+CarFloorStopList = []]
+StopNow = False
 
-MasterIpAddress = "0"
-MasterPortAddress = 5005
-
-# BCM pin numbers.
+# Lift Motor BCM pin numbers.
 #CarLampsPins  = [0,19,20,21,22,23]
 #CarButtonPins = [0,14,15,16,17,18]
 #LSBottomPin   = 7
 #LSTopPin      = 8
 
-# BOARD pin numbers.
+# Lift Motor BOARD pin numbers.
 CarLampsPins  = [0,35,38,40,15,16]
 CarButtonPins = [0,8,10,36,11,12]
 LSBottomPin   = 7
@@ -41,14 +38,19 @@ LSTopPin      = 8
 
 CarStepWaitTime = .0012
 
-# Master Controller.
+# ========================Lift Door Motor Values 
 
+
+
+# ============== Master Controller.
+MasterIpAddress = "0"
+MasterPortAddress = 5005
 StopMetricsDictionary = {}
 
 # Dictionary created to relate IP address to car.
 HallCarDictionary = {}
-hallCallsUP   = [0,0,0,0,0,0]
-hallCallsDOWN = [0,0,0,0,0,0]
+hallCallsUP   = []
+hallCallsDOWN = []
 
 def send(message, ip, port = 5005):
 	#print ('config.Send: ', ip)
