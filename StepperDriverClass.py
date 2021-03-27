@@ -26,12 +26,12 @@ class StepperDriverClass():
 		# Use BCM GPIO references instead of physical pin numbers.
 		GPIO.setmode(GPIO.BOARD)
 		self.id = id
-		self.stepMotorPins =  StepMotorPins  #[31,29,7,5]
-		self.LSBottomPin = LSBottomPin	#26  		# = 7
-		self.LSTopPin = LSTopPin	# 24  		# = 8
+		self.stepMotorPins =  StepMotorPins	#[31,29,7,5]
+		self.LSBottomPin = LSBottomPin		#26  		# = 7
+		self.LSTopPin = LSTopPin		# 24  		# = 8
 		self.Seq = [[1,0,0,1], [1,0,0,0], [1,1,0,0], [0,1,0,0], [0,1,1,0], [0,0,1,0], [0,0,1,1], [0,0,0,1]]
 	
-		# Set up top and bottom floor limit switches.
+		# Set up top and bottom limit switches.
 		GPIO.setup(self.LSBottomPin,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 		GPIO.setup(self.LSTopPin,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 		
@@ -44,6 +44,7 @@ class StepperDriverClass():
 	# Each group of 4 values (bits) are applied to the H-Bridge controller inputs by the RPi outputs pins.
 
 	def moveMotor(self, steps):
+		# config.StopNow = False
 		stepDirection = 1
 		if steps < 0 :
 			stepDirection = -1
@@ -55,11 +56,17 @@ class StepperDriverClass():
 		stepSeqCounter = 0	
 		while stepCount <= steps:
 			# Each loop will rotate the stepper motor one step.
+			if config.StopNow = True:
+				# Emergency Stop
+				# Set both H-Bridges stepper driver to 0 volts to not draw power.
+				for pin in self.StepMotorPins:
+					GPIO.output(pin, False)
+					return stepCount
 
 			if not GPIO.input(self.LSBottomPin) and stepDirection == -1:
 				# At bottom, input is low/false when switch closes.
 				# Can't go lower than bottom.
-				print("bottom limit reached")
+				print("StepperDriveClass: bottom limit reached")
 				config.CarCurrentStepPosition = 0
 				# Set both H-Bridges to 0 volts to not draw power.
 				for pin in self.stepMotorPins:
@@ -69,7 +76,7 @@ class StepperDriverClass():
 			elif not GPIO.input(self.LSTopPin) and stepDirection == 1:
 				# At top, input is high/true when switch closes.
 				# Can't go higher than top.
-				print("top limit reached")
+				print("StepperDriveClass: Top limit reached")
 
 				# Capture the number of steps at the top floor.
 				config.CarTotalSteps = config.CarCurrentStepPosition 
@@ -122,7 +129,7 @@ class StepperDriverClass():
 			if not GPIO.input(self.LSBottomPin) and stepDir == -1:
 				# At bottom, input is low/false when switch closes.
 				# Can't go lower than bottom.
-				print("bottom limit reached")
+				print("StepperDriveClass: Bottom limit reached")
 				config.CarCurrentStepPosition = 0
 				# Set both H-Bridges to 0 volts to not draw power.
 				for pin in self.StepMotorPins:
@@ -132,12 +139,12 @@ class StepperDriverClass():
 			elif not GPIO.input(self.LSTopPin) and stepDir == 1:
 				# At top, input is high/true when switch closes.
 				# Can't go higher than top.
-				print("top limit reached")
+				print("StepperDriveClass: Top limit reached")
 				
 				# Capture the number of steps at the top floor.
 				config.CarTotalSteps = config.CarCurrentStepPosition 
 				
-				print (config.CarCurrentStepPosition)
+				print ("StepperDriveClass: Step Postion is: ",  StepPosition)
 				
 				# Set both H-Bridges to 0 volts to not draw power.
 				for pin in self.StepMotorPins:
