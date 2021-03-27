@@ -5,6 +5,18 @@
 # Explanation of Recent Changes: Modified document to follow new coding standards.
 
 # Description of Code: Controls direction of elevator cars based on calls received.
+"""
+	s=str([1,2,3,4])
+	print (s)
+	s= s.replace('[', '')
+	s= s.replace(']', '')
+	s= s.replace(' ' , '')
+	print (s)
+	ss = list(s.split( ','))
+	print (ss)
+	x= list(map(int, ss))
+	print (x)
+"""
 
 
 # TODO:
@@ -38,19 +50,8 @@ def send(message, ip, port = 5005):
 	sock.sendto(messageBytes, (ip, port))
 	#sock.sendto(message.encode(), (ip, port))
 
+	
 def UpdateMaster(stoplist):
-"""
-	s=str([1,2,3,4])
-	print (s)
-	s= s.replace('[', '')
-	s= s.replace(']', '')
-	s= s.replace(' ' , '')
-	print (s)
-	ss = list(s.split( ','))
-	print (ss)
-	x= list(map(int, ss))
-	print (x)
-"""
 
 
 	stringList = 'arrived@floor|'
