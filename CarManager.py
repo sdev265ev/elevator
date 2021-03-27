@@ -40,18 +40,16 @@ def send(message, ip, port = 5005):
 
 def UpdateMaster(stoplist):
 """
-	s=str([1,2,3,4])
-	print (s)
-
-	s= s.replace('[', '')
-	s= s.replace(']', '')
-	s= s.replace(' ' , '')
-	print (s)
-	ss = list(s.split( ','))
-	print (ss)
-	x= list(map(int, ss))
-
-	print (x)
+s=str([1,2,3,4])
+print (s)
+s= s.replace('[', '')
+s= s.replace(']', '')
+s= s.replace(' ' , '')
+print (s)
+ss = list(s.split( ','))
+print (ss)
+x= list(map(int, ss))
+print (x)
 """
 
 
