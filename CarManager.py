@@ -39,7 +39,7 @@ def send(message, ip, port = 5005):
 	#sock.sendto(message.encode(), (ip, port))
 
 def UpdateMaster(stoplist):
-'''
+"""
 	s=str([1,2,3,4])
 	print (s)
 
@@ -52,7 +52,8 @@ def UpdateMaster(stoplist):
 	x= list(map(int, ss))
 
 	print (x)
-'''
+"""
+
 
 	stringList = 'arrived@floor|'
 	# Convert list to CSV string for network transmission.
