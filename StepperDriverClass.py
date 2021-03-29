@@ -61,9 +61,9 @@ class StepperDriverClass():
 				# Set both H-Bridges stepper driver to 0 volts to not draw power.
 				for pin in self.StepMotorPins:
 					GPIO.output(pin, False)
-					return stepCount
+				return stepCount
 
-			if not GPIO.input(self.LSBottomPin) and stepDirection == -1:
+			elif not GPIO.input(self.LSBottomPin) and stepDirection == -1:
 				# At bottom, input is low/false when switch closes.
 				# Can't go lower than bottom.
 				print("StepperDriveClass: bottom limit reached")
