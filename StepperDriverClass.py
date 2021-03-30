@@ -163,5 +163,5 @@ def move2Position(self, Position):
 
 		time.sleep(.003)	
 		#####time.sleep(config.CarStepWaitTime) # Wait before moving on to next step.
-"""
 		return StepPosition
+"""
