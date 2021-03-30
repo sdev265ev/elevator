@@ -14,7 +14,7 @@ import RPi.GPIO as GPIO
 #from udpSend import udpSend
 
 # Try to open or close the door and check for door blockage during closing.
-def CarDoorDriver(action):
+def CarDoorDriver(Door, action):
 
 	GPIO.setmode(GPIO.BOARD)
 	GPIO.setwarnings(False)
