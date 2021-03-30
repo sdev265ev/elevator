@@ -67,7 +67,7 @@ class StepperDriverClass():
 				# At bottom, input is low/false when switch closes.
 				# Can't go lower than bottom.
 				print("StepperDriveClass: bottom limit reached")
-				config.CarCurrentStepPosition = 0
+				#config.CarCurrentStepPosition = 0
 				# Set both H-Bridges to 0 volts to not draw power.
 				for pin in self.stepMotorPins:
 					GPIO.output(pin, False)
@@ -79,9 +79,9 @@ class StepperDriverClass():
 				print("StepperDriveClass: Top limit reached")
 
 				# Capture the number of steps at the top floor.
-				config.CarTotalSteps = config.CarCurrentStepPosition 
+				#config.CarTotalSteps = config.CarCurrentStepPosition 
 
-				print (config.CarCurrentStepPosition)
+				#print (config.CarCurrentStepPosition)
 
 				# Set both H-Bridges to 0 volts to not draw power.
 				for pin in self.stepMotorPins:
@@ -142,7 +142,7 @@ class StepperDriverClass():
 				print("StepperDriveClass: Top limit reached")
 				
 				# Capture the number of steps at the top floor.
-				config.CarTotalSteps = config.CarCurrentStepPosition 
+				#config.CarTotalSteps = config.CarCurrentStepPosition 
 				
 				print ("StepperDriveClass: Step Postion is: ",  StepPosition)
 				
