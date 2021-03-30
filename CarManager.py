@@ -88,7 +88,7 @@ def CarManager():
 	#print ('CarManager: Moving to top floor to count steps')
 	# Move car to top floor.
 	# Will stop when car reaches limit switch.
-	totalSteps = Car.moveMotor(555555)
+	totalSteps = Car.moveMotor(1000000)
 	print ("CarManager: Total steps: ", totalSteps)
 	#time.sleep(1)
 		
