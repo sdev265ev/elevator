@@ -19,7 +19,7 @@ def CarDoorManager(Door, action):
 		
 		if action == 'open':
 			print ('CarDoorManager: Sending open command')
-			status = Door.moveMotor(100000)
+			status = Door.moveMotor(-100000)
 			print ('CarDoorManager: Status: ', status)
 			return 'open'
 		
