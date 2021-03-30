@@ -151,7 +151,7 @@ def CarManager():
 			# We must physically move the car to this floor
 			# The floor being checked may not be where the car is actually currently located.
 			# It may be above or below the checked floor.
-			cdm.CarDoorManager('close')
+			cdm.CarDoorManager(Door, 'close')
 			while currentFloor != floor:
 				# Move the car until a stop floor is reached.
 				if (floor - currentFloor) > 0:
