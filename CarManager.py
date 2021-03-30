@@ -162,13 +162,13 @@ def CarManager():
 					#  otherwise we new o move it downward
 					moveDirection = -1
 
-				cdm.CarDoorManager('close')				# Wit for the door to close
-				Car.moveMotor(stepsPerFloor * moveDirection)		# Move one floor.
-				currentFloor += moveDirection				# Now moved, update floor.
-				config.CarFloorStopList[0] = currentFloor * direction	# Update list for new floor and direction.
-				config.CarFloorStopList[currentFloor] = 0		# Clear list entry for this floor.
-				clm.CarLampManager(currentFloor, 0) 			# Car lamp turned off for this floor
-				# UpdateMaster(config.CarFloorStopList)			# Tell master the floor where now located
+			cdm.CarDoorManager('close')				# Wit for the door to close
+			Car.moveMotor(stepsPerFloor * moveDirection)		# Move one floor.
+			currentFloor += moveDirection				# Now moved, update floor.
+			config.CarFloorStopList[0] = currentFloor * direction	# Update list for new floor and direction.
+			config.CarFloorStopList[currentFloor] = 0		# Clear list entry for this floor.
+			clm.CarLampManager(currentFloor, 0) 			# Car lamp turned off for this floor
+			# UpdateMaster(config.CarFloorStopList)			# Tell master the floor where now located
 	
 		cdm.CarDoorManager(Door, 'open')					# Stopped at floor
 		time.sleep(3)
