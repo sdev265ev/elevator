@@ -11,6 +11,7 @@ import time
 from CarDoorDriver import CarDoorDriver
 
 def CarDoorManager(Door, action):
+	print ("CarDoorManager: Received command: " , action)
 	#doorOpenWaitTime = config.doorOpenWaitTime
 	doorOpenWaitTime = 3
 	while True:
@@ -19,9 +20,10 @@ def CarDoorManager(Door, action):
 		
 		if action == 'open':
 			print ('CarDoorManager: Sending open command')
-			CarDoorDriver('open')
+			CarDoorDriver(Door, 'open')
 			return 'open'
-		else:
+		
+		elif action == 'close':
 			print ('CarDoorManager: Sending close command')
 			while CarDoorDriver('close') == 'blocked':
 				# Door is blocked, keep trying to close.
@@ -32,5 +34,8 @@ def CarDoorManager(Door, action):
 				print ('CarDoorManager: Waiting for blocked door timeout')
 				time.sleep(doorOpenWaitTime)
 				print ('CarDoorDriver: Sending close command')
+				return "closed"
 
-			return "open"
+		else:
+			print ('CarDoorManager: Bad Command')
+			return "error"
