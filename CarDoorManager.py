@@ -25,7 +25,7 @@ def CarDoorManager(Door, action):
 		
 		elif action == 'close':
 			print ('CarDoorManager: Sending close command')
-			status = Door.moveMotor(-100000)
+			status = Door.moveMotor(100000)
 			print ('CarDoorManager: Status: ', status)
 			return "closed"
 
