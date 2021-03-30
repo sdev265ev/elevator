@@ -137,16 +137,16 @@ def CarManager():
 		#    either from inside the car or from the master controller.
 
 		# This is the beginning of experimental code to allow calling a floor from the keyboard
-		#if keyboard.is_pressed('1'):  # if key '1' is pressed 
-		#		CarButtonCallBack(1)
-		#	elif keyboard.is_pressed('2'):  # if key '2' is pressed 
-		#		CarButtonCallBack(2)
-		#	elif keyboard.is_pressed('3'):  # if key '3' is pressed 
-		#		CarButtonCallBack(3)
-		#	elif keyboard.is_pressed('4'):  # if key '4' is pressed 
-		#		CarButtonCallBack(4)
-		#	elif keyboard.is_pressed('5'):  # if key '5' is pressed 
-		#		CarButtonCallBack(5)
+		if keyboard.is_pressed('1'):  # if key '1' is pressed 
+				CarButtonCallBack(1)
+			elif keyboard.is_pressed('2'):  # if key '2' is pressed 
+				CarButtonCallBack(2)
+			elif keyboard.is_pressed('3'):  # if key '3' is pressed 
+				CarButtonCallBack(3)
+			elif keyboard.is_pressed('4'):  # if key '4' is pressed 
+				CarButtonCallBack(4)
+			elif keyboard.is_pressed('5'):  # if key '5' is pressed 
+				CarButtonCallBack(5)
 
 		if config.CarFloorStopList[floor] == 1:
 			# We are scanning the call list looking for a floor call (floor =  1 value)
