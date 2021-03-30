@@ -20,22 +20,28 @@ def CarDoorManager(Door, action):
 		
 		if action == 'open':
 			print ('CarDoorManager: Sending open command')
-			CarDoorDriver(Door, 'open')
+			status = Door.moveMotor(100000)
+			print ('CarDoorManager: Status: ', status)
 			return 'open'
 		
 		elif action == 'close':
 			print ('CarDoorManager: Sending close command')
-			while CarDoorDriver(Door,'close') == 'blocked':
-				# Door is blocked, keep trying to close.
-				#blockedCount += 1
-				print ('CarDoorManager: Main: Door is blocked')
-				print ('CarDoorManager: Sending Open command')
-				CarDoorDriver(Door'open')
-				print ('CarDoorManager: Waiting for blocked door timeout')
-				time.sleep(doorOpenWaitTime)
-				print ('CarDoorDriver: Sending close command')
-				return "closed"
+			status = Door.moveMotor(-100000)
+			print ('CarDoorManager: Status: ', status)
+			return "closed"
 
 		else:
 			print ('CarDoorManager: Bad Command')
 			return "error"
+"""
+while CarDoorDriver(Door,'close') == 'blocked':
+	# Door is blocked, keep trying to close.
+	#blockedCount += 1
+	print ('CarDoorManager: Main: Door is blocked')
+	print ('CarDoorManager: Sending Open command')
+	CarDoorDriver(Door'open')
+	print ('CarDoorManager: Waiting for blocked door timeout')
+	time.sleep(doorOpenWaitTime)
+	print ('CarDoorDriver: Sending close command')
+	return "closed"
+"""
