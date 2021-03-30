@@ -8,7 +8,6 @@
 
 import time
 #import config
-from CarDoorDriver import CarDoorDriver
 
 def CarDoorManager(Door, action):
 	print ("CarDoorManager: Received command: " , action)
