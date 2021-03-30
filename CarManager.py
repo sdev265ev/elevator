@@ -64,55 +64,64 @@ def CarManager():
 	topFloor = config.TopFloor
 	bottomFloor = config.BottomFloor
 	totalSteps = 0
-	Car = StepperDriverClass(id, [31,29,7,5], 26, 24 ) # Create an instance of the stepper motor driver.
-	Door = StepperDriverClass(id, [37,22,19,21], 32, 23 ) # Create an instance of the stepper motor driver.
-	
+
 	CarLampInitialize.CarLampInitialize() # Configure GPIO and turn off car lamps.
 	CarButtonInitialize.CarButtonInitialize() # Set the car buttons for callbacks	.
 
-	# Clear the floor stop list
+	# The stepper driver is a class. There is an instance for the lift motor and one for the door stepper motor.
+	Car = StepperDriverClass(id, [31,29,7,5], 26, 24 ) # Create an instance of the stepper motor driver.
+	Door = StepperDriverClass(id, [37,22,19,21], 32, 23 ) # Create an instance of the stepper motor driver.
+	
+	#  Set the floor stop list to the proper size per the configuration
 	config.CarFloorStopList = [0] * (config.TopFloor + 1) # Create floor stop list, need one more for zero index.
 	config.CarFloorStopList[0] = 1 # Set car location to 1 going up.
 	
+	# To work in a multielevator environment, we need to tell the master controller of this elevatro
+	#  The IP address of the master controller is stored in the configuration file
 	########cfm.GetMasterIP() # Get the IP address of the Master controller.
 	
+	# This call will start a separate thread that will listen to commands from the master controller
 	#####nl.udpListenerMain()
 	
-	# cdm.CarDoorManager(Door, 'close')
+	# Begin car intialization to find the stepper motor steps required to move the car to the top floor
 	print ('CarManager: Moving to bottom floor')
 	# Move car to bottom floor.
 	Car.moveMotor(-1000000)
-	time.sleep(.2)
+	time.sleep(.5)
 	
 	totalSteps = 1000000
-	#print ('CarManager: Moving to top floor to count steps')
-	# Move car to top floor.
+	print ('CarManager: Moving to top floor to count steps')
 	# Will stop when car reaches limit switch.
 	totalSteps = Car.moveMotor(1000000)
+	
+	#the total steps is a measure of the distance from the bottom to the top floor
+	#  Used to find the number of steps to a given floor (no detection device at each floor)
 	print ("CarManager: Total steps: ", totalSteps)
 	#time.sleep(1)
 		
 	#print ('CarManager: Moving to bottom floor')
 	Car.moveMotor(-1000000)
 	
+	#cycle door and leave open (we start on the bottom floor
 	print ('CarManager: Cycling door')
 	cdm.CarDoorManager(Door, 'open')
 	time.sleep(1)
 	cdm.CarDoorManager(Door, 'close')
 	time.sleep(1)
 	cdm.CarDoorManager(Door, 'open')
+	print ('CarManager: Door Cycling Completed')
 	
 	# Setting parameters for directions, height of elevator, and initial floor.
-	#up = 1
-	#down = -1
 	floor = 1
 	direction = 1
 	stepsPerFloor = totalSteps / (topFloor - 1)
-	currentFloor = 1
-	UpdateMaster(config.CarFloorStopList)
+	
+	# tell the master controller where this car is currently loacated (which will be on the current floor
+	# UpdateMaster(config.CarFloorStopList)
 	
 	# ====================== MAIN LOOP ===============================
 	print ('CarManager: Starting main loop')
+	currentFloor = 1
 
 	while True:
 		# Poll the floor call list continuously.
@@ -121,6 +130,7 @@ def CarManager():
 		# Along the way each floor is checked to see if a new stop has come in,
 		# either from inside the car or from the master controller.
 
+		# This is the beginning of experimental code to allow calling a floor from the keyboard
 		#if keyboard.is_pressed('1'):  # if key '1' is pressed 
 		#		CarButtonCallBack(1)
 		#	elif keyboard.is_pressed('2'):  # if key '2' is pressed 
@@ -133,10 +143,11 @@ def CarManager():
 		#		CarButtonCallBack(5)
 
 		if config.CarFloorStopList[floor] == 1:
+			# We are scanning the call list looking for a floor call (a 1 value)
 			# The floor being checked may not be where the car is actually currently located.
 			# It may be above or below the checked floor.
 			while currentFloor != floor:
-				# Keep moving car until a stop floor is reached.
+				# Move the car until a stop floor is reached.
 				if (floor - currentFloor) > 0:
 					# Move car up toward logical floor.
 					moveDirection = 1
@@ -147,9 +158,9 @@ def CarManager():
 				Car.moveMotor(stepsPerFloor * moveDirection)	# Move one floor.
 				currentFloor += moveDirection			# Now moved, update floor.
 				config.CarFloorStopList[0] = currentFloor	# Update list for new floor.
-				config.CarFloorStopList[currentFloor] = 0	# Clear list for this floor.
+				config.CarFloorStopList[currentFloor] = 0	# Clear list entry for this floor.
 				clm.CarLampManager(currentFloor, 0) 		# Car lamp turned off.
-				UpdateMaster(config.CarFloorStopList)
+				# UpdateMaster(config.CarFloorStopList)		# Tell master the floor we are now located
 				#if config.CarFloorStopList[currentFloor] == 1:
 					# Hall call may happen on the way to the destination floor.
 					# Pause at this floor for passengers.
