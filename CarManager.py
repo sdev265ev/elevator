@@ -65,7 +65,7 @@ def CarManager():
 	bottomFloor = config.BottomFloor
 	totalSteps = 0
 	Car = StepperDriverClass(id, [31,29,7,5], 26, 24 ) # Create an instance of the stepper motor driver.
-	Door = StepperDriverClass(id, [37,22,19,21], 23, 32 ) # Create an instance of the stepper motor driver.
+	Door = StepperDriverClass(id, [37,22,19,21], 32, 23 ) # Create an instance of the stepper motor driver.
 	
 	CarLampInitialize.CarLampInitialize() # Configure GPIO and turn off car lamps.
 	CarButtonInitialize.CarButtonInitialize() # Set the car buttons for callbacks	.
