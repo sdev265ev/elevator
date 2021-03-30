@@ -12,7 +12,7 @@
 #   Add recommendations for identifier names
 # pip3 install keyboard
 
-#import random
+# sudo python3 -m pip install keyboard
 import keyboard  # using module keyboard
 import time
 import config
