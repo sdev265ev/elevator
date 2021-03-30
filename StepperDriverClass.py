@@ -108,60 +108,60 @@ class StepperDriverClass():
 			time.sleep(config.CarStepWaitTime) # Wait before moving on to next step.
 		return stepCount
 """
-	def move2Position(self, Position):
-		StepPosition =0
-		StepSeqCounter = 0	
-		stepDir = 0
-		
-		if config.CarCurrentStepPosition > Position:
-			# Sets the stepper direction to down.
-			stepDir = -1
+def move2Position(self, Position):
+	StepPosition =0
+	StepSeqCounter = 0	
+	stepDir = 0
+
+	if config.CarCurrentStepPosition > Position:
+		# Sets the stepper direction to down.
+		stepDir = -1
+	else:
+		# Sets the stepper direction to up.
+		stepDir = 1
+
+	while config.CarCurrentStepPosition != Position:
+		# Each loop will rotate the stepper motor one step.
+
+		if not GPIO.input(self.LSBottomPin) and stepDir == -1:
+			# At bottom, input is low/false when switch closes.
+			# Can't go lower than bottom.
+			print("StepperDriveClass: Bottom limit reached")
+			# Set both H-Bridges to 0 volts to not draw power.
+			for pin in self.StepMotorPins:
+				GPIO.output(pin, False)
+			return StepPosition
+
+		elif not GPIO.input(self.LSTopPin) and stepDir == 1:
+			# At top, input is high/true when switch closes.
+			# Can't go higher than top.
+			print("StepperDriveClass: Top limit reached")
+			print ("StepperDriveClass: Step Postion is: ",  StepPosition)
+
+			# Set both H-Bridges to 0 volts to not draw power.
+			for pin in self.StepMotorPins:
+				GPIO.output(pin, False)
+
+			return StepPosition
+
 		else:
-			# Sets the stepper direction to up.
-			stepDir = 1
-					
-		while config.CarCurrentStepPosition != Position:
-			# Each loop will rotate the stepper motor one step.
+			# Set the RPi 4 output pins the the values in the current sequence item.
+			# Move motor one step.
+			for pin in range(0, 4):
+				xpin = self.StepMotorPins[pin]
+				if self.Seq[StepSeqCounter][pin] != 0:
+					GPIO.output(xpin, True)
+				else:
+					GPIO.output(xpin, False)
+				StepSeqCounter += stepDir
 
-			if not GPIO.input(self.LSBottomPin) and stepDir == -1:
-				# At bottom, input is low/false when switch closes.
-				# Can't go lower than bottom.
-				print("StepperDriveClass: Bottom limit reached")
-				# Set both H-Bridges to 0 volts to not draw power.
-				for pin in self.StepMotorPins:
-					GPIO.output(pin, False)
-				return StepPosition
-			
-			elif not GPIO.input(self.LSTopPin) and stepDir == 1:
-				# At top, input is high/true when switch closes.
-				# Can't go higher than top.
-				print("StepperDriveClass: Top limit reached")
-				print ("StepperDriveClass: Step Postion is: ",  StepPosition)
-				
-				# Set both H-Bridges to 0 volts to not draw power.
-				for pin in self.StepMotorPins:
-					GPIO.output(pin, False)
-					
-				return StepPosition
-			
-			else:
-				# Set the RPi 4 output pins the the values in the current sequence item.
-				# Move motor one step.
-				for pin in range(0, 4):
-					xpin = self.StepMotorPins[pin]
-					if self.Seq[StepSeqCounter][pin] != 0:
-						GPIO.output(xpin, True)
-					else:
-						GPIO.output(xpin, False)
-					StepSeqCounter += stepDir
+			# When we reach the end of the sequence, start again.
+			if StepSeqCounter >= len(self.Seq):
+				StepSeqCounter = 0			
+			elif StepSeqCounter < 0:
+				StepSeqCounter = len(self.Seq) + stepDir
 
-				# When we reach the end of the sequence, start again.
-				if StepSeqCounter >= len(self.Seq):
-					StepSeqCounter = 0			
-				elif StepSeqCounter < 0:
-					StepSeqCounter = len(self.Seq) + stepDir
-				
-			time.sleep(.003)	
-			#####time.sleep(config.CarStepWaitTime) # Wait before moving on to next step.
+		time.sleep(.003)	
+		#####time.sleep(config.CarStepWaitTime) # Wait before moving on to next step.
 """
 		return StepPosition
