@@ -13,7 +13,7 @@
 # pip3 install keyboard
 
 #import random
-# import keyboard  # using module keyboard
+import keyboard  # using module keyboard
 import time
 import config
 import RPi.GPIO as GPIO
