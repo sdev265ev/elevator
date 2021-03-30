@@ -21,7 +21,7 @@ Role = "" # Hall or Master.
 TopFloor = 5
 BottomFloor = 1
 FloorStopList    = []
-CarFloorStopList = []]
+CarFloorStopList = []
 StopNow = False
 
 # Lift Motor BCM pin numbers.
