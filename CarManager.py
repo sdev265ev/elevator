@@ -36,12 +36,11 @@ import CarLampManager as clm
 import CarButtonCallBack
 import CarButtonInitialize
 import CarLampInitialize
-import CarFindMaster   as cfm
+#import CarFindMaster   as cfm
 import CarDoorManager  as cdm
-import NetworkListener as nl
+#import NetworkListener as nl
 
 import socket
-
 def send(message, ip, port = 5005):
 	#print ('Send: ', ip, port)
 	messageBytes = message.encode() # message is encoded into byte code for transmission
@@ -50,10 +49,7 @@ def send(message, ip, port = 5005):
 	sock.sendto(messageBytes, (ip, port))
 	#sock.sendto(message.encode(), (ip, port))
 
-	
 def UpdateMaster(stoplist):
-
-
 	stringList = 'arrived@floor|'
 	# Convert list to CSV string for network transmission.
 
