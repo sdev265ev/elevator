@@ -67,7 +67,7 @@ class StepperDriverClass():
 				# At bottom, input is low/false when switch closes.
 				# Can't go lower than bottom.
 				print("StepperDriveClass: bottom limit reached")
-				#config.CarCurrentStepPosition = 0
+				
 				# Set both H-Bridges to 0 volts to not draw power.
 				for pin in self.stepMotorPins:
 					GPIO.output(pin, False)
@@ -77,9 +77,6 @@ class StepperDriverClass():
 				# At top, input is high/true when switch closes.
 				# Can't go higher than top.
 				print("StepperDriveClass: Top limit reached")
-
-				# Capture the number of steps at the top floor.
-				#config.CarTotalSteps = config.CarCurrentStepPosition 
 
 				#print (config.CarCurrentStepPosition)
 
@@ -110,7 +107,7 @@ class StepperDriverClass():
 			stepCount += 1
 			time.sleep(config.CarStepWaitTime) # Wait before moving on to next step.
 		return stepCount
-	
+"""
 	def move2Position(self, Position):
 		StepPosition =0
 		StepSeqCounter = 0	
@@ -130,7 +127,6 @@ class StepperDriverClass():
 				# At bottom, input is low/false when switch closes.
 				# Can't go lower than bottom.
 				print("StepperDriveClass: Bottom limit reached")
-				config.CarCurrentStepPosition = 0
 				# Set both H-Bridges to 0 volts to not draw power.
 				for pin in self.StepMotorPins:
 					GPIO.output(pin, False)
@@ -140,10 +136,6 @@ class StepperDriverClass():
 				# At top, input is high/true when switch closes.
 				# Can't go higher than top.
 				print("StepperDriveClass: Top limit reached")
-				
-				# Capture the number of steps at the top floor.
-				#config.CarTotalSteps = config.CarCurrentStepPosition 
-				
 				print ("StepperDriveClass: Step Postion is: ",  StepPosition)
 				
 				# Set both H-Bridges to 0 volts to not draw power.
@@ -171,5 +163,5 @@ class StepperDriverClass():
 				
 			time.sleep(.003)	
 			#####time.sleep(config.CarStepWaitTime) # Wait before moving on to next step.
-
+"""
 		return StepPosition
