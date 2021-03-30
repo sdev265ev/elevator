@@ -83,12 +83,8 @@ def CarManager():
 	cdm.CarDoorManager(Door, 'open')
 	time.sleep(1)
 	cdm.CarDoorManager(Door, 'close')
-	time.sleep(1)
-	cdm.CarDoorManager(Door, 'open')
 	print ('CarManager: Door Cycling Completed')
-	
-	
-	
+		
 	#  Set the floor stop list to the proper size per the configuration
 	config.CarFloorStopList = [0] * (config.TopFloor + 1) # Create floor stop list, need one more for zero index.
 	config.CarFloorStopList[0] = 1 # Set car location to 1 going up.
@@ -118,9 +114,7 @@ def CarManager():
 		
 	#print ('CarManager: Moving to bottom floor')
 	Car.moveMotor(-1000000)
-	
-	
-	
+		
 	# Setting parameters for directions, height (in steps) of elevator, and initial floor.
 	floor = 1
 	direction = 1
