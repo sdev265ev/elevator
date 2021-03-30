@@ -56,7 +56,7 @@ class StepperDriverClass():
 		stepSeqCounter = 0	
 		while stepCount <= steps:
 			# Each loop will rotate the stepper motor one step.
-			if config.StopNow = True:
+			if config.StopNow == True:
 				# Emergency Stop
 				# Set both H-Bridges stepper driver to 0 volts to not draw power.
 				for pin in self.StepMotorPins:
