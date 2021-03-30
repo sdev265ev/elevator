@@ -89,14 +89,6 @@ def CarManager():
 	# This call will start a separate thread that will listen to commands from the master controller
 	#####nl.udpListenerMain()
 	
-	#cycle door and leave open (we start on the bottom floor
-	print ('CarManager: Cycling door')
-	cdm.CarDoorManager(Door, 'open')
-	time.sleep(1)
-	cdm.CarDoorManager(Door, 'close')
-	time.sleep(1)
-	cdm.CarDoorManager(Door, 'open')
-	print ('CarManager: Door Cycling Completed')
 	
 	# Begin car intialization to find the stepper motor steps required to move the car to the top floor
 	# Bottom floor is like a reference position
@@ -104,7 +96,6 @@ def CarManager():
 	Car.moveMotor(-1000000)
 	time.sleep(.5)
 	
-	totalSteps = 1000000
 	print ('CarManager: Moving to top floor to count steps')
 	# Will stop when car reaches limit switch.
 	totalSteps = Car.moveMotor(1000000)
@@ -117,6 +108,14 @@ def CarManager():
 	#print ('CarManager: Moving to bottom floor')
 	Car.moveMotor(-1000000)
 	
+	#cycle door and leave open (we start on the bottom floor
+	print ('CarManager: Cycling door')
+	cdm.CarDoorManager(Door, 'open')
+	time.sleep(1)
+	cdm.CarDoorManager(Door, 'close')
+	time.sleep(1)
+	cdm.CarDoorManager(Door, 'open')
+	print ('CarManager: Door Cycling Completed')
 	
 	
 	# Setting parameters for directions, height (in steps) of elevator, and initial floor.
