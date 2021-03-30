@@ -25,12 +25,12 @@ def CarDoorManager(Door, action):
 		
 		elif action == 'close':
 			print ('CarDoorManager: Sending close command')
-			while CarDoorDriver('close') == 'blocked':
+			while CarDoorDriver(Door,'close') == 'blocked':
 				# Door is blocked, keep trying to close.
 				#blockedCount += 1
 				print ('CarDoorManager: Main: Door is blocked')
 				print ('CarDoorManager: Sending Open command')
-				CarDoorDriver('open')
+				CarDoorDriver(Door'open')
 				print ('CarDoorManager: Waiting for blocked door timeout')
 				time.sleep(doorOpenWaitTime)
 				print ('CarDoorDriver: Sending close command')
