@@ -95,7 +95,7 @@ def CarManager():
 	#print ('CarManager: Moving to bottom floor')
 	Car.moveMotor(-1000000)
 	
-	#cycle Car door
+	print ('CarManager: Cycling door')
 	cdm.CarDoorManager(Door, 'open')
 	time.sleep(1)
 	cdm.CarDoorManager(Door, 'close')
