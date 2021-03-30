@@ -94,8 +94,12 @@ def CarManager():
 		
 	#print ('CarManager: Moving to bottom floor')
 	Car.moveMotor(-1000000)
+	
+	#cycle Car door
 	cdm.CarDoorManager(Door, 'open')
+	time.sleep(1)
 	cdm.CarDoorManager(Door, 'close')
+	time.sleep(1)
 	cdm.CarDoorManager(Door, 'open')
 	
 	# Setting parameters for directions, height of elevator, and initial floor.
