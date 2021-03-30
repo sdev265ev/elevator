@@ -89,6 +89,15 @@ def CarManager():
 	# This call will start a separate thread that will listen to commands from the master controller
 	#####nl.udpListenerMain()
 	
+	#cycle door and leave open (we start on the bottom floor
+	print ('CarManager: Cycling door')
+	cdm.CarDoorManager(Door, 'open')
+	time.sleep(1)
+	cdm.CarDoorManager(Door, 'close')
+	time.sleep(1)
+	cdm.CarDoorManager(Door, 'open')
+	print ('CarManager: Door Cycling Completed')
+	
 	# Begin car intialization to find the stepper motor steps required to move the car to the top floor
 	# Bottom floor is like a reference position
 	print ('CarManager: Moving to bottom floor')
@@ -108,14 +117,7 @@ def CarManager():
 	#print ('CarManager: Moving to bottom floor')
 	Car.moveMotor(-1000000)
 	
-	#cycle door and leave open (we start on the bottom floor
-	print ('CarManager: Cycling door')
-	cdm.CarDoorManager(Door, 'open')
-	time.sleep(1)
-	cdm.CarDoorManager(Door, 'close')
-	time.sleep(1)
-	cdm.CarDoorManager(Door, 'open')
-	print ('CarManager: Door Cycling Completed')
+	
 	
 	# Setting parameters for directions, height (in steps) of elevator, and initial floor.
 	floor = 1
@@ -137,16 +139,16 @@ def CarManager():
 		#    either from inside the car or from the master controller.
 
 		# This is the beginning of experimental code to allow calling a floor from the keyboard
-		if keyboard.is_pressed('1'):  # if key '1' is pressed 
-			CarButtonCallBack(1)
-		elif keyboard.is_pressed('2'):  # if key '2' is pressed 
-			CarButtonCallBack(2)
-		elif keyboard.is_pressed('3'):  # if key '3' is pressed 
-			CarButtonCallBack(3)
-		elif keyboard.is_pressed('4'):  # if key '4' is pressed 
-			CarButtonCallBack(4)
-		elif keyboard.is_pressed('5'):  # if key '5' is pressed 
-			CarButtonCallBack(5)
+		#if keyboard.is_pressed('1'):  # if key '1' is pressed 
+		#	CarButtonCallBack(1)
+		#elif keyboard.is_pressed('2'):  # if key '2' is pressed 
+		#	CarButtonCallBack(2)
+		#elif keyboard.is_pressed('3'):  # if key '3' is pressed 
+		#	CarButtonCallBack(3)
+		#elif keyboard.is_pressed('4'):  # if key '4' is pressed 
+		#	CarButtonCallBack(4)
+		#elif keyboard.is_pressed('5'):  # if key '5' is pressed 
+		#	CarButtonCallBack(5)
 
 		if config.CarFloorStopList[floor] == 1:
 			# We are scanning the call list looking for a floor call (floor =  1 value)
