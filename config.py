@@ -11,7 +11,6 @@
 import socket
 import datetime
 import time
-DEBUGLEVEL = 3
 
 Role = "" # Hall or Master.
 
@@ -60,10 +59,11 @@ def send(message, ip, port = 5005):
 	sock.sendto(messageBytes, (ip, port))
 	#sock.sendto(message.encode(), (ip, port))
 
-def log(message, level = 1):
-	if DEBUGLEVEL > level:
-		print (message)
-		#sys.stdout.flush()
-		ip = '127.0.0.1'
-		now = datetime.datetime.now()
-		message += str(now) +' | ' + message + ' | ' + MasterIpAddress
+DEBUGLEVEL = 0
+#This is a generic logging function. 
+#  Can be updated to send messages to a file or database
+def logThis(source, message, level = 1):
+	if level > DEBUGLEVEL:
+		dt = str(datetime.datetime.now())
+		msg = dt  + " | " + source + " | " + message 
+		print (msg)
