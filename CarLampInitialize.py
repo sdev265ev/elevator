@@ -37,6 +37,7 @@ def CarLampInitialize():
 	# Turn off the car button/lamps.
 	for pin in range(1, config.TopFloor + 1):
 		GPIO.output(CarLampsPins[pin],True)
-	
+		
+	# Print a statement to indicate when completed (IN)
 	print ('Car Lamp Initialization Completed.')
 
