@@ -31,6 +31,7 @@ def CarButtonInitialize():
 	GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 	
 	# Detects the push of the button to know what floor the car is being requested to go to from inside the car.
+	# Detects at the push of each button to know exactly what floor the car is being requested to move to from inside. (IN)
 	GPIO.add_event_detect(8,  GPIO.RISING, callback=CarButtonCallBack, bouncetime=400)  
 	GPIO.add_event_detect(10, GPIO.RISING, callback=CarButtonCallBack, bouncetime=400)  
 	GPIO.add_event_detect(36, GPIO.RISING, callback=CarButtonCallBack, bouncetime=400)  
