@@ -16,7 +16,7 @@ def CarDoorManager(Door, action):
 	while True:
 		# Returns when the door is closed.
 		#blockedCount = 0
-		
+		# If door is open, send the open command if not send the close command.
 		if action == 'open':
 			print ('CarDoorManager: Sending open command')
 			status = Door.moveMotor(1000000)
