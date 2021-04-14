@@ -27,7 +27,7 @@ def CarButtonCallBack(buttonID):
 	print ('CarButtonCallBack: Floor -->', floor)
 	print ('CarButtonCallBack: old CarFloorStopList: ', config.FloorStopList)
 	
-	# what happen if the floor lamp indicator is off, and the turn on and set list to stop at floor is not press
+	# what happen if the floor lamp indicator is off, and the turn on and set list to stop at floor is not press (IN)
 	# If floor lamp indicator in car is off, turn on and add set list to stop at floor.
 	# If floor lamp indicator in car is on, turn off and remove from list.
 
