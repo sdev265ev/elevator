@@ -23,7 +23,7 @@ def CarButtonInitialize():
 	GPIO.setmode(GPIO.BOARD)
 	GPIO.setwarnings(False)
 
-	# Sets up the pins to to be prepared for an input.
+	# Sets up the pins to be prepared for an input.
 	GPIO.setup(8,  GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  
 	GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  
 	GPIO.setup(36, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  
