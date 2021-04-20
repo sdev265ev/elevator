@@ -22,7 +22,7 @@ GPIO.setwarnings(False)
 import netifaces as ni
 ni.ifaddresses('eth0')
 ip = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
-print ip  # should print "192.168.100.37"
+print (ip)
 
 # Setup RPi device I/O.
 # The out pin will be pulled up if true is desired.
