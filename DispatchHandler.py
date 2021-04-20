@@ -97,7 +97,7 @@ def UpdateCarStopList():
 	if carMetric != 999:
 		config.send( 'stopAtThisFloor|' + str(bestFloor),  carIP)
 		print('message to stop sent to car: ' , carIP)
-		
+
 	config.send( 'stopAtThisFloor|' + str(bestFloor),  carIP)
 		print('message to stop sent to car: ' , carIP)
 		print ('config.StopMetricsDictionary: ', config.StopMetricsDictionary)
