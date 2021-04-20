@@ -30,7 +30,8 @@ def CarLampInitialize():
 	# Turn on the car button/lamps.
 	for pin in range(1, config.TopFloor + 1):
 		GPIO.output(CarLampsPins[pin],False)
-	
+		
+	# what happen if the lamp fails to turn off after 2 second (IN)
 	# Turn the lamp off after 2 seconds.
 	time.sleep(2)
 
