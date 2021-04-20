@@ -19,7 +19,7 @@ import config as config
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
-import commands
+import socket
 intf = 'eth0'
 intf_ip = commands.getoutput("ip address show dev " + intf).split()
 intf_ip = intf_ip[intf_ip.index('inet') + 1].split('/')[0]
