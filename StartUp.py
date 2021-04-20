@@ -20,10 +20,10 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
 import socket
-intf = 'eth0'
-intf_ip = commands.getoutput("ip address show dev " + intf).split()
-intf_ip = intf_ip[intf_ip.index('inet') + 1].split('/')[0]
-print (intf_ip)
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8", 80))
+print(s.getsockname()[0])
+s.close()
 
 # Setup RPi device I/O.
 # The out pin will be pulled up if true is desired.
