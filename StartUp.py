@@ -19,13 +19,10 @@ import config as config
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
-
-import socket
-hostname = socket.gethostname()
-ip_address = socket.gethostbyname(hostname)
-IPAddr = socket.gethostbyname(hostname)   
-print("Your Computer Name is:" + hostname)   
-print("Your Computer IP Address is:" + IPAddr)   
+import netifaces as ni
+ni.ifaddresses('eth0')
+ip = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
+print ip  # should print "192.168.100.37"
 
 # Setup RPi device I/O.
 # The out pin will be pulled up if true is desired.
