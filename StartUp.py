@@ -19,6 +19,14 @@ import config as config
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
+
+import socket
+hostname = socket.gethostname()
+ip_address = socket.gethostbyname(hostname)
+print(f"Hostname: {hostname}")
+print(f"IP Address: {ip_address}")
+
+
 # Setup RPi device I/O.
 # The out pin will be pulled up if true is desired.
 rolePinIO = 18
