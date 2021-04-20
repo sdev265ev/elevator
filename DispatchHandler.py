@@ -16,9 +16,9 @@ def DispatchHandler(ip, msg):
 	# This method is called when any car stops at a floor
 	# msg arrives as a comma separated string values (CSV)
 	# Convert the CSV string to a a list of metric numbers
-	print ('DispatchHandler - msg: ',msg)
+	print ('DispatchHandler--> msg: ',msg)
 	
-	stopsStr = msg.split(',')
+	stopsStr = msg.split(':')
 	stopList = []			#create empty list
 	print ('DispatchHandler - stopsStr: ', stopsStr)
 	
