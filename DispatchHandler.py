@@ -23,7 +23,7 @@ def DispatchHandler(ip, msg):
 	print ('DispatchHandler - stopsStr: ', stopsStr)
 	
 	#------ convert car stop list of string to numbers
-	for i in stopsStr:
+	for i in stopsStr[1]:
 		stopList.append(int(i))
 	floor = stopList[0]
 	
