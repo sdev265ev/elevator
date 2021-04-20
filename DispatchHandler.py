@@ -24,6 +24,15 @@ def DispatchHandler(ip, msg):
 	print ('DispatchHandler - stopsStr: ', stopsStr[1])
 	
 	#------ convert car stop list of string to numbers
+	
+	#coverting the string into list of strings
+	list1=list(stopsStr[1].split(','))
+	print("Converted string to list : ",list1)
+ 
+	#typecasting the individual elements of the string list into integer using the map() method
+	stopList=list(map(int,list1))
+	print("List of integers : ",stopList)
+	
 	for i in stopsStr[1]:
 		stopList.append(int(i))
 	floor = stopList[0]
