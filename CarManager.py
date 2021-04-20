@@ -167,7 +167,7 @@ def CarManager():
 				config.CarFloorStopList[0] = currentFloor * direction	# Update list for new floor and direction.
 			config.CarFloorStopList[currentFloor] = 0		# Clear list entry for this floor.
 			clm.CarLampManager(currentFloor, 0) 			# Car lamp turned off for this floor
-			# UpdateMaster(config.CarFloorStopList)			# Tell master the floor where now located
+			UpdateMaster(config.CarFloorStopList)			# Tell master the floor where now located
 	
 		cdm.CarDoorManager(Door, 'open')					# Stopped at floor
 		# time.sleep(3)
