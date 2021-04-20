@@ -33,7 +33,7 @@ def DispatchHandler(ip, msg):
 	stopList=list(map(int,list1))
 	print("List of integers : ",stopList)
 	
-	Floor = stopList[0]
+	floor = stopList[0]
 	hlm.HallLampManager(floor,0)			# turn off the hall lamp
 	if floor < 0:					# clear the hall button pressed lists
 		# don't forget the floor is negative if going down
