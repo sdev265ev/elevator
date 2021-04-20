@@ -14,6 +14,7 @@ import config as config
 
 def HallLampManager(floor, status):
 	print ('HallLampManager: ', floor, status)
+	floor = abs(floor)
 	# Use physical pin numbers/GPIO references instead of BCM.
 
 	GPIO.setmode(GPIO.BOARD)
