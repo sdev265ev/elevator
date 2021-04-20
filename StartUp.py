@@ -19,6 +19,7 @@ import config as config
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
+#https://stackoverflow.com/questions/166506/finding-local-ip-addresses-using-pythons-stdlib 
 import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
@@ -30,7 +31,7 @@ s.close()
 rolePinIO = 18
 GPIO.setup(rolePinIO,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-# Read IO ports if find role.
+# Read IO port if find role.
 # Jumper will pull the port to ground (0 Volts) --> false.
 
 print('StartUp: Starting... Detect role of the computer')
