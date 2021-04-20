@@ -20,18 +20,16 @@ def DispatchHandler(ip, msg):
 	
 	stopsStr = msg.split(':')
 	stopList = []			#create empty list
-	print ('DispatchHandler - stopsStr: ', stopsStr)
-	print ('DispatchHandler - stopsStr: ', stopsStr[1])
-	
+		
 	#------ convert car stop list of string to numbers
-	
-	#coverting the string into list of strings
+		#coverting the string into list of strings
 	list1=list(stopsStr[1].split(','))
 	print("Converted string to list : ",list1)
  
 	#typecasting elements of the string list into integer using the map() method
 	stopList=list(map(int,list1))
-	print("List of integers : ",stopList)
+	#print("List of integers : ",stopList)
+	config.CarFloorStopList = stopList
 	
 	floor = stopList[0]
 	hlm.HallLampManager(floor,0)			# turn off the hall lamp
@@ -114,6 +112,7 @@ def stopList2Metrics(stopList):
 	bottomFloor = config.BottomFloor
 	
 	#Create a list for each floor, for 5 floors the length is 6 elements
+	print ("config.CarFloorStopList:  " , config.CarFloorStopList)
 	list = [0] * len(config.CarFloorStopList)
 
 	# This would work also --> list = [0] * (topFloor - BottomFloor + 2)
@@ -127,7 +126,7 @@ def stopList2Metrics(stopList):
 	
 	floor = abs(stopList[0])
 	print (list)
-	Print (stopList)
+	print (stopList)
 	list[0] = stopList[0]  #current floor on now
 
 	metric = 0
