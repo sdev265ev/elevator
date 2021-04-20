@@ -23,9 +23,9 @@ GPIO.setwarnings(False)
 import socket
 hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
-print("Hostname: {hostname}")
-print("IP Address: {ip_address}")
-
+IPAddr = socket.gethostbyname(hostname)   
+print("Your Computer Name is:" + hostname)   
+print("Your Computer IP Address is:" + IPAddr)   
 
 # Setup RPi device I/O.
 # The out pin will be pulled up if true is desired.
