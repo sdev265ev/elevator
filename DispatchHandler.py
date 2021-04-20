@@ -42,8 +42,8 @@ def DispatchHandler(ip, msg):
 	print('DispatchHandler - stopList: ', stopList)
 	
 	# convert to metrics list
-	#  x = stopList2Metrics(stopList)
-	#print ('DispatchHandler - stopList2Metrics: ', x)
+	x = stopList2Metrics(stopList)
+	print ('DispatchHandler - stopList2Metrics: ', x)
 	
 	# Register this car - add or update the car metrics dictionary
 	config.StopMetricsDictionary.update({ip:x})
