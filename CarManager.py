@@ -121,7 +121,7 @@ def CarManager():
 	stepsPerFloor = totalSteps / (topFloor - 1)
 	
 	# tell the master controller where this car is currently loacated (which will be on the current floor)
-	# UpdateMaster(config.CarFloorStopList)
+	UpdateMaster(config.CarFloorStopList)
 	
 	# ====================== MAIN LOOP ===============================
 	print ('CarManager: Starting main loop')
