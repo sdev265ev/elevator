@@ -29,10 +29,11 @@ def DispatchHandler(ip, msg):
 	list1=list(stopsStr[1].split(','))
 	print("Converted string to list : ",list1)
  
-	#typecasting the individual elements of the string list into integer using the map() method
+	#typecasting elements of the string list into integer using the map() method
 	stopList=list(map(int,list1))
 	print("List of integers : ",stopList)
 	
+	Floor = stopList[0]
 	hlm.HallLampManager(floor,0)			# turn off the hall lamp
 	if floor < 0:					# clear the hall button pressed lists
 		# don't forget the floor is negative if going down
