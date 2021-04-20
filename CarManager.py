@@ -13,7 +13,7 @@
 # pip3 install keyboard
 
 # sudo python3 -m pip install keyboard
-import keyboard  # using module keyboard
+# import keyboard  # using module keyboard (must use apt-get)
 import time
 import config
 import RPi.GPIO as GPIO
