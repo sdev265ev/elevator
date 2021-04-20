@@ -21,6 +21,7 @@ def DispatchHandler(ip, msg):
 	stopsStr = msg.split(':')
 	stopList = []			#create empty list
 	print ('DispatchHandler - stopsStr: ', stopsStr)
+	print ('DispatchHandler - stopsStr: ', stopsStr[1])
 	
 	#------ convert car stop list of string to numbers
 	for i in stopsStr[1]:
