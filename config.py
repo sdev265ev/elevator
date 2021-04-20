@@ -48,8 +48,8 @@ StopMetricsDictionary = {}
 
 # Dictionary created to relate IP address to car.
 HallCarDictionary = {}
-hallCallsUP   = []
-hallCallsDOWN = []
+hallCallsUP   = [0,0,0,0,0,0]
+hallCallsDOWN = [0,0,0,0,0,0]
 
 def send(message, ip, port = 5005):
 	#print ('config.Send: ', ip)
