@@ -126,7 +126,8 @@ def stopList2Metrics(stopList):
 		direction = -1
 	
 	floor = abs(stopList[0])
-
+	print (list)
+	Print (stopList)
 	list[0] = stopList[0]  #current floor on now
 
 	metric = 0
