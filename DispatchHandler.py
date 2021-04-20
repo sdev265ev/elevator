@@ -143,7 +143,7 @@ def stopList2Metrics(stopList):
 			if stopList[f] == 1:  # will be stopping at this floor
 				metric += 1
 				CallListIsempty = False
-				
+		# this check to see if the callListisEmpty or not		
 		if CallListIsEmpty:
 			metric = 0
 		# Calc numbers from floor BELOW to include bottom floor
