@@ -56,6 +56,7 @@ def myListener(t):
 				if oldmsg != msg + ip:
 					dh.DispatchHandler(ip, msg)
 					oldmsg = msg+ip
+				pass
 				
 			elif msg.startswith('stopAtThisFloor|'):
 				x = []
@@ -65,9 +66,11 @@ def myListener(t):
 				print ()
 				print ('stopAtThisFloor: ', config.CarFloorStopList)
 				print ()
+				pass
 			elif msg == 'quit':
 				print ("   Network Listener - Received quit message")
 				t.stop()
+				pass
 
 			elif msg == 'MasterIpDiscover':
 				if config.Role == 'car':
@@ -83,6 +86,7 @@ def myListener(t):
 						msg = "MasterIpOffer"
 						config.send (msg, ip, 5006)
 						print ("   Network Listener - Discover reply sent to: ", ip)
+				pass
 
 			elif msg == 'RequestStopInformation':
 				# Enter code here to send floor list to car.
