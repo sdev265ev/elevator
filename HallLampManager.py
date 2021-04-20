@@ -13,7 +13,7 @@ import time
 import config as config
 
 def HallLampManager(floor, status):
-	#print ('HallLampManager: ', floor, status)
+	print ('HallLampManager: ', floor, status)
 	# Use physical pin numbers/GPIO references instead of BCM.
 
 	GPIO.setmode(GPIO.BOARD)
