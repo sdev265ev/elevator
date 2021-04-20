@@ -19,20 +19,11 @@ import config as config
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 
-import socket
-import fcntl
-import struct
-
-def get_ip_address(ifname):
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    return socket.inet_ntoa(fcntl.ioctl(
-        s.fileno(),
-        0x8915,  # SIOCGIFADDR
-        struct.pack('256s', ifname[:15])
-    )[20:24])
-
-print(get_ip_address('lo'))
-print(get_ip_address('eth0'))
+import commands
+intf = 'eth0'
+intf_ip = commands.getoutput("ip address show dev " + intf).split()
+intf_ip = intf_ip[intf_ip.index('inet') + 1].split('/')[0]
+print (intf_ip)
 
 # Setup RPi device I/O.
 # The out pin will be pulled up if true is desired.
