@@ -98,7 +98,9 @@ def UpdateCarStopList():
 		config.send( 'stopAtThisFloor|' + str(bestFloor),  carIP)
 		print('message to stop sent to car: ' , carIP)
 		
-	#print ('config.StopMetricsDictionary: ', config.StopMetricsDictionary)
+	config.send( 'stopAtThisFloor|' + str(bestFloor),  carIP)
+		print('message to stop sent to car: ' , carIP)
+		print ('config.StopMetricsDictionary: ', config.StopMetricsDictionary)
 	return
 
 
