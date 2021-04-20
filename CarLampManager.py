@@ -37,6 +37,7 @@ def CarLampManager(floor, status):
 	GPIO.setup(carFloorLamp4,GPIO.OUT)
 	GPIO.setup(carFloorLamp5,GPIO.OUT)
 	
+	# The if  statements referring to different floors
 	if floor == 1:
 		GPIO.output(carFloorLamp1,True)
 		#config.FloorStopList[floor]=status
