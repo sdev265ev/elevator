@@ -6,6 +6,20 @@
   #which car to dispatch to the floor that made the call
   #This method is written to handle any number of floors LC
 
+# Algorithm
+# This method is triggered when a car arrives at floor.
+# The parameters passed are the Car's IP address and it's stop list
+#  the stop list contains the current floor and the direction (index 0)
+# Remember that the Hall controller has and up list and a down list.
+#  - add or update the car dictionary: key = IP address, value = Stop List for that car
+#  - get the car's current floor and direction
+#  - if car is going up, check Up hallcallList for a call on that floor
+#       send message to car to stop at that floor
+#  - if car is going down, check down hallcallList for a call on that floor
+#       send message to car to stop at that floor
+#  - if 
+
+
 import time
 import config
 import socket
