@@ -67,3 +67,19 @@ def logThis(source, message, level = 1):
 		dt = str(datetime.datetime.now())
 		msg = dt  + " | " + source + " | " + message 
 		print (msg)
+
+def csv2List(csv):
+	# csv is a comma separated string values (CSV)
+	# Convert the CSV string to a a list of metric numbers
+	print ('csv2List--> csv: ',msg)
+	
+	csvStr = csv.split(':')
+
+	#coverting the string into list of strings
+	stopListStr=List(csvStr[1].split(','))
+	print("csv2List--> Converted string to list : ",stopListStr)
+ 
+	#typecasting elements of the string list into integer using the map() method
+	#stopList = []			#create empty list
+	stopList=list(map(int,stopListStr))
+	return stopList
