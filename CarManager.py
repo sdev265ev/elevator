@@ -80,10 +80,10 @@ def CarManager():
 	
 	#cycle door and leave open (we start on the bottom floor
 	print ('CarManager: Cycling door')
-	cdm.CarDoorManager(Door, 'open')
-	time.sleep(1)
-	cdm.CarDoorManager(Door, 'close')
-	print ('CarManager: Door Cycling Completed')
+	#cdm.CarDoorManager(Door, 'open')
+	#time.sleep(1)
+	#cdm.CarDoorManager(Door, 'close')
+	#print ('CarManager: Door Cycling Completed')
 		
 	#  Set the floor stop list to the proper size per the configuration
 	config.CarFloorStopList = [0] * (config.TopFloor + 1) # Create floor stop list, need one more for zero index.
@@ -151,7 +151,7 @@ def CarManager():
 			# We must physically move the car to this floor
 			# The floor being checked may not be where the car is actually currently located.
 			# It may be above or below the checked floor.
-			cdm.CarDoorManager(Door, 'close')
+			#cdm.CarDoorManager(Door, 'close')
 			while currentFloor != floor:
 				# Move the car until a stop floor is reached.
 				if (floor - currentFloor) > 0:
@@ -169,7 +169,7 @@ def CarManager():
 			clm.CarLampManager(currentFloor, 0) 			# Car lamp turned off for this floor
 			UpdateMaster(config.CarFloorStopList)			# Tell master the floor where now located
 	
-		cdm.CarDoorManager(Door, 'open')					# Stopped at floor
+		#cdm.CarDoorManager(Door, 'open')					# Stopped at floor
 		# time.sleep(3)
 		#cdm.CarDoorManager(Door, 'close')		
 		floor += direction							# next floor - up or down
