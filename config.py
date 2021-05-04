@@ -57,7 +57,9 @@ def send(message, ip, port = 5005):
 	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 	sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	sock.sendto(messageBytes, (ip, port))
-	#sock.sendto(message.encode(), (ip, port))
+	# The encode() method encodes the string, using the specified encoding. 
+	# If no encoding is specified, UTF-8 will be used.
+	#sock.sendto(message.encode('utf-8'), (ip, port))
 
 DEBUGLEVEL = 0
 #This is a generic logging function. 
@@ -69,6 +71,8 @@ def logThis(source, message, level = 1):
 		print (msg)
 
 def csv2List(csv):
+	# function to take a string of numbers and convert to a list object
+	#  "1,2,3,4,5"  --> [1,2,3,4,5]
 	# csv is a comma separated string values (CSV)
 	# Convert the CSV string to a a list of metric numbers
 	print ('csv2List--> csv: ',msg)
