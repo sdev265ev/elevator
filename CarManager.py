@@ -79,7 +79,7 @@ def CarManager():
 	Door = StepperDriverClass(id, [37,22,19,21], 32, 23 ) # Create an instance of the stepper motor driver.
 	
 	#cycle door and leave open (we start on the bottom floor
-	print ('CarManager: Cycling door')
+	#print ('CarManager: Cycling door')
 	#cdm.CarDoorManager(Door, 'open')
 	#time.sleep(1)
 	#cdm.CarDoorManager(Door, 'close')
@@ -165,9 +165,9 @@ def CarManager():
 				Car.moveMotor(stepsPerFloor * moveDirection)		# Move one floor.
 				currentFloor += moveDirection				# Now moved, update floor.
 				config.CarFloorStopList[0] = currentFloor * direction	# Update list for new floor and direction.
-			config.CarFloorStopList[currentFloor] = 0		# Clear list entry for this floor.
-			clm.CarLampManager(currentFloor, 0) 			# Car lamp turned off for this floor
-			UpdateMaster(config.CarFloorStopList)			# Tell master the floor where now located
+			config.CarFloorStopList[currentFloor] = 0			# Clear list entry for this floor.
+			clm.CarLampManager(currentFloor, 0) 				# Car lamp turned off for this floor
+			UpdateMaster(config.CarFloorStopList)				# Tell master the floor where now located
 	
 		#cdm.CarDoorManager(Door, 'open')					# Stopped at floor
 		# time.sleep(3)
