@@ -4,6 +4,7 @@ def main():
 	import time
 	from time import sleep
 	
+	"""
 	import wiringpi 
 	
 	 
@@ -33,6 +34,9 @@ def main():
 	finally:  
 		wiringpi.digitalWrite(65, 0) # sets port GPA1 to 0 (0V, off)  
 		wiringpi.pinMode(65, 0)      # sets GPIO GPA1 back to input Mode  
+	"""
+	
+	
 	# GPB7 is already an input, so no need to change anything  
 	# Define registers values from datasheet
 	IODIRA = 0x00  # IO direction A - 1= input 0 = output
@@ -66,9 +70,6 @@ def main():
 		portb = i2cbus.read_byte_data(i2caddress, GPIOB)  # Read the value of Port B
 		print(portb) # print the value of Port B
 	
-
-
-
 
 if __name__ == "__main__":
 		main()
