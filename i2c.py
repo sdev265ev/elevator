@@ -3,7 +3,7 @@ def main():
 	from smbus import SMBus
 	import time
 	
-	import wiringpi as wiringpi  
+	import wiringPi as wiringPi  
 	
 	 
 	pin_base = 65       # lowest available starting number is 65  
