@@ -2,6 +2,7 @@
 def main():
 	from smbus import SMBus
 	import time
+	from time import sleep
 	
 	import wiringpi 
 	
