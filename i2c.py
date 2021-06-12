@@ -26,9 +26,10 @@ def main():
 		while True:  
 			if not wiringpi.digitalRead(80): # inverted the logic as using pull-up  
 				wiringpi.digitalWrite(65, 1) # sets port GPA1 to 1 (3V3, on)  
+				sleep(0.5)
 			else:  
 				wiringpi.digitalWrite(65, 0) # sets port GPA1 to 0 (0V, off)  
-				sleep(0.05)  
+				sleep(0.5)  
 	finally:  
 		wiringpi.digitalWrite(65, 0) # sets port GPA1 to 0 (0V, off)  
 		wiringpi.pinMode(65, 0)      # sets GPIO GPA1 back to input Mode  
