@@ -22,21 +22,16 @@ def main():
 	# the button reading logic with a "not"  
 
 	try:  
-	    while True:  
-		if not wiringpi.digitalRead(80): # inverted the logic as using pull-up  
-		    wiringpi.digitalWrite(65, 1) # sets port GPA1 to 1 (3V3, on)  
-		else:  
-		    wiringpi.digitalWrite(65, 0) # sets port GPA1 to 0 (0V, off)  
-		sleep(0.05)  
+		while True:  
+			if not wiringpi.digitalRead(80): # inverted the logic as using pull-up  
+				wiringpi.digitalWrite(65, 1) # sets port GPA1 to 1 (3V3, on)  
+			else:  
+				wiringpi.digitalWrite(65, 0) # sets port GPA1 to 0 (0V, off)  
+				sleep(0.05)  
 	finally:  
-	    wiringpi.digitalWrite(65, 0) # sets port GPA1 to 0 (0V, off)  
-	    wiringpi.pinMode(65, 0)      # sets GPIO GPA1 back to input Mode  
-	    # GPB7 is already an input, so no need to change anything  
-	
-	
-	
-	
-	
+		wiringpi.digitalWrite(65, 0) # sets port GPA1 to 0 (0V, off)  
+		wiringpi.pinMode(65, 0)      # sets GPIO GPA1 back to input Mode  
+	# GPB7 is already an input, so no need to change anything  
 	# Define registers values from datasheet
 	IODIRA = 0x00  # IO direction A - 1= input 0 = output
 	IODIRB = 0x01  # IO direction B - 1= input 0 = output    
