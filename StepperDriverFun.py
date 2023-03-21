@@ -8,13 +8,13 @@
 
 # https://components101.com/motors/28byj-48-stepper-motor 
 
-#  28BYJ-48 Stepper Motor Technical Specifications
-#Rated Voltage: 5V DC
-#Number of Phases: 4
-#Stride Angle: 5.625 degrees/64 = .087875 degrees/step
-#Pull in torque: 300 gf.cm
-#Insulated Power: 600VAC/1mA/1s
-#Coil: Unipolar 5 lead coil
+# 28BYJ-48 Stepper Motor Technical Specifications
+# Rated Voltage: 5V DC
+# Number of Phases: 4
+# Stride Angle: 5.625 degrees/64 = .087875 degrees/step
+# Pull in torque: 300 gf.cm
+# Insulated Power: 600VAC/1mA/1s
+# Coil: Unipolar 5 lead coil
 
 import sys
 import time
